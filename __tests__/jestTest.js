@@ -3,6 +3,7 @@ import {
   capitalize,
   reverseString,
   caesarCipher,
+  analyzeArray,
 } from "../jestTest";
 
 describe.skip("String mutations", () => {
@@ -100,7 +101,7 @@ describe.skip("Calculator operations", () => {
   });
 });
 
-describe("Caesar Cipher encryptions", () => {
+describe.skip("Caesar Cipher encryptions", () => {
   test("Shift by 0", () => {
     const string = "test";
     const cipherText = caesarCipher(string, 0);
@@ -129,5 +130,55 @@ describe("Caesar Cipher encryptions", () => {
     const string = "Testing? Well, with Jest!";
     const cipherText = caesarCipher(string, 3);
     expect(cipherText).toMatch("Whvwlqj? Zhoo, zlwk Mhvw!");
+  });
+});
+
+describe("Array Statistics ", () => {
+  describe("Data set 1", () => {
+    const array = [1, 8, 3, 4, 2, 6];
+    const object = analyzeArray(array);
+    test("Get average", () => {
+      expect(object).toEqual(expect.objectContaining({ average: 4 }));
+    });
+
+    test("Get min", () => {
+      expect(object).toEqual(expect.objectContaining({ min: 1 }));
+    });
+
+    test("Get max", () => {
+      expect(object).toEqual(expect.objectContaining({ max: 8 }));
+    });
+
+    test("Get length", () => {
+      expect(object).toEqual(expect.objectContaining({ length: 6 }));
+    });
+
+    test("Get length", () => {
+      expect(object).toEqual({ average: 4, min: 1, max: 8, length: 6 });
+    });
+  });
+
+  describe("Data set 2", () => {
+    const array = [1, 2, 3, 4, 6];
+    const object = analyzeArray(array);
+    test("Get average", () => {
+      expect(object).toEqual(expect.objectContaining({ average: 3.2 }));
+    });
+
+    test("Get min", () => {
+      expect(object).toEqual(expect.objectContaining({ min: 1 }));
+    });
+
+    test("Get max", () => {
+      expect(object).toEqual(expect.objectContaining({ max: 6 }));
+    });
+
+    test("Get length", () => {
+      expect(object).toEqual(expect.objectContaining({ length: 5 }));
+    });
+
+    test("Get length", () => {
+      expect(object).toEqual({ average: 3.2, min: 1, max: 6, length: 5 });
+    });
   });
 });

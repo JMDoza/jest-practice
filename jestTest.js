@@ -102,7 +102,17 @@ function caesarCipher(string, shift) {
 }
 
 function analyzeArray(array) {
-  return array;
+  const length = array.length;
+  const average = array.reduce((sum, num) => sum + num) / length;
+  const min = Math.min(...array);
+  const max = Math.max(...array);
+
+  return {
+    average,
+    min,
+    max,
+    length,
+  };
 }
 
 export {
