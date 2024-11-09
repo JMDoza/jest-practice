@@ -119,9 +119,15 @@ describe("Caesar Cipher encryptions", () => {
     expect(cipherText).toMatch("qbpq");
   });
 
-  test("Shift by -3 and uppercase", () => {
+  test("Shift with uppercase", () => {
     const string = "tESt";
     const cipherText = caesarCipher(string, -3);
     expect(cipherText).toMatch("qBPq");
+  });
+
+  test("shift with puncuation", () => {
+    const string = "Testing? Well, with Jest!";
+    const cipherText = caesarCipher(string, 3);
+    expect(cipherText).toMatch("Whvwlqj? Zhoo, zlwk Mhvw!");
   });
 });

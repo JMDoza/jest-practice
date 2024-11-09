@@ -86,12 +86,16 @@ function caesarCipher(string, shift) {
       string.charAt(i) === string.charAt(i).toUpperCase() ? 1 : 0;
     const alphabetCase = alphabet[indexUpperCase];
     const charIndex = alphabetCase.indexOf(string.charAt(i));
-    const cipherIndex = charIndex + shift;
-    const cipherChar =
-      cipherIndex >= 0
-        ? alphabetCase[cipherIndex]
-        : alphabetCase[alphabet.length - 1 + cipherIndex];
-    cipherText += cipherChar;
+    if (charIndex != -1) {
+      const cipherIndex = charIndex + shift;
+      const cipherChar =
+        cipherIndex >= 0
+          ? alphabetCase[cipherIndex]
+          : alphabetCase[alphabet.length - 1 + cipherIndex];
+      cipherText += cipherChar;
+    } else {
+      cipherText += string.charAt(i);
+    }
   }
 
   return cipherText;
